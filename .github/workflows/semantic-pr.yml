@@ -1,0 +1,54 @@
+name: Semantic PR and Commits
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  semantic-pr:
+    runs-on: ubuntu-latest
+    steps:
+      # Check PR title
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            test
+            chore
+          requireScope: false
+          # Validate the PR title and all commit messages
+          validateSingleCommit: true
+          validateSingleCommitMatchesPrTitle: true
+          # Custom error message
+          errorComment: |
+            Title must follow semantic naming convention:
+            
+            `<type>(<optional-scope>): <description>`
+            
+            Allowed types:
+            - feat: New feature
+            - fix: Bug fix
+            - docs: Documentation changes
+            - style: Formatting changes
+            - refactor: Code refactoring
+            - test: Adding or refactoring tests
+            - chore: Maintenance tasks
+            
+            Examples:
+            - feat(navigation): add japanese character support
+            - fix(core-data): resolve crash on app launch
+            - docs: update readme with setup instructions
