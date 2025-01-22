@@ -1,0 +1,33 @@
+name: Semantic PR and Commits
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  semantic-pr:
+    runs-on: ubuntu-latest
+    steps:
+      # Check PR title
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            test
+            chore
+          requireScope: false
+          # Validate the PR title and all commit messages
