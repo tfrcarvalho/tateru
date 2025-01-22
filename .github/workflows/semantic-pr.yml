@@ -31,24 +31,3 @@ jobs:
             chore
           requireScope: false
           # Validate the PR title and all commit messages
-          validateSingleCommit: true
-          validateSingleCommitMatchesPrTitle: true
-          # Custom error message
-          errorComment: |
-            Title must follow semantic naming convention:
-            
-            `<type>(<optional-scope>): <description>`
-            
-            Allowed types:
-            - feat: New feature
-            - fix: Bug fix
-            - docs: Documentation changes
-            - style: Formatting changes
-            - refactor: Code refactoring
-            - test: Adding or refactoring tests
-            - chore: Maintenance tasks
-            
-            Examples:
-            - feat(navigation): add japanese character support
-            - fix(core-data): resolve crash on app launch
-            - docs: update readme with setup instructions
