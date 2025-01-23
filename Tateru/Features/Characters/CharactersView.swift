@@ -45,11 +45,12 @@ struct CharactersView: View {
             .navigationDestination(isPresented: $isStudySessionActive) {
                 if let type = selectedType {
                     let cards = CharacterSets.getCharacterSet(type).map {
-                        FlashCardContent.character($0)
+                        FlashCard.character($0)
                     }
                     StudySessionView(
                         title: type.rawValue,
-                        cards: cards
+                        cards: cards,
+                        dealer: CountBasedDealer()
                     )
                 }
             }
