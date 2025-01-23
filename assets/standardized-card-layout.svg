@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Guidelines and measurements -->
+  <defs>
+    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#eee" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <g id="front-card">
+    <rect x="50" y="50" width="300" height="300" rx="15" fill="white" stroke="#ccc" stroke-width="2"/>
+    
+    <!-- Main content area guide - centered vertically and horizontally -->
+    <rect x="75" y="125" width="250" height="150" fill="none" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <!-- Vertical and horizontal center lines -->
+    <line x1="200" y1="125" x2="200" y2="275" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <line x1="75" y1="200" x2="325" y2="200" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <!-- Centered character -->
+    <text x="200" y="215" text-anchor="middle" dominant-baseline="middle" font-size="72" font-family="sans-serif">木</text>
+    
+    <!-- Context text area guide -->
+    <rect x="75" y="285" width="250" height="40" fill="none" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <text x="200" y="310" text-anchor="middle" dominant-baseline="middle" font-size="20" fill="#666">(noun)</text>
+    
+    <!-- Measurements -->
+    <text x="30" y="200" text-anchor="end" font-size="12" fill="#999">150px</text>
+    <text x="30" y="305" text-anchor="end" font-size="12" fill="#999">40px</text>
+    <text x="200" y="35" text-anchor="middle" font-size="24" fill="#666">Front</text>
+  </g>
+
+  <g id="back-card">
+    <rect x="450" y="50" width="300" height="300" rx="15" fill="white" stroke="#ccc" stroke-width="2"/>
+    
+    <!-- First section (1/3) - content centered both ways -->
+    <rect x="475" y="75" width="250" height="100" fill="none" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <!-- Center lines for first section -->
+    <line x1="475" y1="125" x2="725" y2="125" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <line x1="600" y1="75" x2="600" y2="175" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <!-- Centered content -->
+    <text x="600" y="115" text-anchor="middle" dominant-baseline="middle" font-size="36">木 (き)</text>
+    <text x="600" y="150" text-anchor="middle" dominant-baseline="middle" font-size="24">tree</text>
+    
+    <!-- Divider -->
+    <line x1="470" y1="175" x2="730" y2="175" stroke="#ccc" stroke-width="1"/>
+    
+    <!-- Second section (2/3) -->
+    <rect x="475" y="175" width="250" height="150" fill="none" stroke="#e0e0e0" stroke-dasharray="5,5"/>
+    <!-- Example content with consistent spacing -->
+    <text x="485" y="200" font-size="16">JLPT N5</text>
+    <text x="485" y="225" font-size="16">Pronunciation: ki</text>
+    <text x="485" y="250" font-size="16">Examples:</text>
+    <text x="485" y="275" font-size="16">木曜日 (もくようび) - Thursday</text>
+    <text x="485" y="300" font-size="16">Note: Base kanji for wood/tree</text>
+    
+    <!-- Measurements -->
+    <text x="430" y="125" text-anchor="end" font-size="12" fill="#999">100px</text>
+    <text x="430" y="250" text-anchor="end" font-size="12" fill="#999">150px</text>
+    <text x="600" y="35" text-anchor="middle" font-size="24" fill="#666">Back</text>
+  </g>
+</svg>
