@@ -6,18 +6,18 @@
 //
 import SwiftUI
 
-struct StudySessionView: View {
+struct StudySessionView<T>: View {
     let title: String
-    let cards: [FlashCard]
+    let cards: [FlashCard<T>]
     let dealer: DealingStrategy
     
-    @State private var currentCard: FlashCard?
+    @State private var currentCard: FlashCard<T>?
     @State private var correctCount = 0
     @State private var incorrectCount = 0
     @State private var showingResults = false
     @Environment(\.dismiss) private var dismiss
     
-    init(title: String, cards: [FlashCard], dealer: DealingStrategy) {
+    init(title: String, cards: [FlashCard<T>], dealer: DealingStrategy) {
         self.title = title
         self.cards = cards
         self.dealer = dealer
@@ -34,7 +34,7 @@ struct StudySessionView: View {
                     .font(.caption)
                     .padding(.top)
                 
-                FlashCardView(content: card)
+                FlashCardView(card: card)
                     .gesture(DragGesture().onEnded { gesture in
                         if gesture.translation.width > 50 {
                             markCorrect()
@@ -55,6 +55,7 @@ struct StudySessionView: View {
                         }
                         .padding(8)
                     }
+                    .id(card.id)
                 
                 HStack(spacing: 40) {
                     Button(action: markIncorrect) {
