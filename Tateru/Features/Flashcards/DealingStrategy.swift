@@ -7,9 +7,11 @@
 
 
 protocol DealingStrategy {
-    func selectNext(from cards: [FlashCard]) -> FlashCard?
-    func updateWeight(for card: FlashCard, wasCorrect: Bool)
-    func isSessionComplete(cards: [FlashCard]) -> Bool
-    func getProgress(cards: [FlashCard]) -> StudyProgress
-    func getCardProgress(for card: FlashCard) -> Int
+    typealias T = Any
+    
+    func selectNext<T>(from cards: [FlashCard<T>]) -> FlashCard<T>?
+    func updateWeight<T>(for card: FlashCard<T>, wasCorrect: Bool)
+    func isSessionComplete<T>(cards: [FlashCard<T>]) -> Bool
+    func getProgress<T>(cards: [FlashCard<T>]) -> StudyProgress
+    func getCardProgress<T>(for card: FlashCard<T>) -> Int
 }

@@ -10,7 +10,10 @@ import SwiftUI
 
 struct CharactersView: View {
     @State private var selectedType: Character.CharacterType?
+    @State private var selectedMode = CharacterStudyMode.symbolToRomaji
     @State private var isStudySessionActive = false
+    @State private var isModeToggleOn = false
+    private let cardGenerator = CharacterCardGenerator()
     
     var body: some View {
         NavigationStack {
@@ -39,13 +42,18 @@ struct CharactersView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
         
+                Toggle("Reverse mode", isOn: $isModeToggleOn)
+                    .onChange(of: isModeToggleOn) { _, newValue in
+                        selectedMode = newValue ? CharacterStudyMode.romajiToSymbol : CharacterStudyMode.symbolToRomaji
+                    }
+                
                 Spacer()
             }
             .padding()
             .navigationDestination(isPresented: $isStudySessionActive) {
                 if let type = selectedType {
-                    let cards = CharacterSets.getCharacterSet(type).map {
-                        FlashCard.character($0)
+                    let cards = CharacterSets.getCharacterSet(type).map { chr in
+                        cardGenerator.generateCard(from: chr, mode: selectedMode)
                     }
                     StudySessionView(
                         title: type.rawValue,
