@@ -6,14 +6,11 @@
 //
 import SwiftUI
 
-enum FlashCard {
-    case character(Character)
-    case vocabulary(Vocabulary)
-    
-    var id: UUID {
-        switch self {
-            case .character(let char): return char.id
-            case .vocabulary(let vocab): return vocab.id
-        }
-    }
+struct FlashCard<T>: Identifiable {
+    let id: UUID
+    let prompt: String
+    let context: String?
+    let answer: String
+    let details: [String: String]
+    let source: T  // Original item (Character or Vocabulary)
 }

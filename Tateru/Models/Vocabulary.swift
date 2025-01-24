@@ -7,14 +7,21 @@
 import SwiftUI
 
 struct Vocabulary {
-    let id = UUID()
-    
-    let word: String
-    let reading: String
-    let meaning: String
-    let partOfSpeech: String
-    let level: Int?
-    let examples: [String]
-    let notes: String?
+   let id = UUID()
+   let meaning: String
+   let romaji: String
+   let hiragana: String
+   let katakana: String
+   let kanji: String?
+   let word: String // Most common
+   let partOfSpeech: String
+   let category: Category
+   let level: Int?
+   let examples: [String]
+   let notes: String?
+   
+   enum Category: String {
+       case greetings = "Greetings"
+       case calendar = "Calendar"
+   }
 }
-
